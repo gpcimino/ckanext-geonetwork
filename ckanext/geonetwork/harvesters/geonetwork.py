@@ -80,11 +80,11 @@ class GeoNetworkHarvester(CSWHarvester, SingletonPlugin):
 
             existing_keys = [entry.get('key') for entry in package_dict['extras']]
 
-            for key, value in default_extras.iteritems():
+            for key, value in default_extras.items():
                 log.debug('Processing extra %s', key)
                 if not key in existing_keys or override_extras:
                     # Look for replacement strings
-                    if isinstance(value, basestring):
+                    if isinstance(value, str):
                         value = value.format(
                                harvest_source_id=str(harvest_object.job.source.id),
                                harvest_source_url=str(harvest_object.job.source.url).strip('/'),
